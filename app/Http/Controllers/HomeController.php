@@ -12,6 +12,7 @@ use App\Sponsor;
 use App\Faq;
 use App\Price;
 use App\Amenity;
+use App\Honorary;
 
 class HomeController extends Controller
 {
@@ -19,6 +20,7 @@ class HomeController extends Controller
     {
         $settings = Setting::pluck('value', 'key');
         $speakers = Speaker::all();
+        $honorary = Honorary::all();
         $schedules = Schedule::with('speaker')
             ->orderBy('start_time', 'asc')
             ->get()
@@ -31,13 +33,13 @@ class HomeController extends Controller
         $prices = Price::with('amenities')->get();
         $amenities = Amenity::with('prices')->get();
 
-        return view('home', compact('settings', 'speakers', 'schedules', 'venues', 'hotels', 'galleries', 'sponsors', 'faqs', 'prices', 'amenities'));
+        return view('home', compact('settings', 'speakers', 'honorary', 'schedules', 'venues', 'hotels', 'galleries', 'sponsors', 'faqs', 'prices', 'amenities'));
     }
 
     public function view(Speaker $speaker)
     {
         $settings = Setting::pluck('value', 'key');
-        
+
         return view('speaker', compact('settings', 'speaker'));
     }
 }

@@ -71,19 +71,19 @@
                             </td>
                             <td>
                                 @can('honorary_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.speakers.show', $honorary->id) }}">
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.honorary.show', $honorary->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
                                 @can('speaker_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.speakers.edit', $honorary->id) }}">
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.honorary.edit', $honorary->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
                                 @can('speaker_delete')
-                                    <form action="{{ route('admin.speakers.destroy', $honorary->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                    <form action="{{ route('admin.honorary.destroy', $honorary->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">

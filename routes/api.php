@@ -19,7 +19,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     //Honorary
     Route::post('honorary/media', 'honoraryApiController@storeMedia')->name('honorary.storeMedia');
-    Route::apiResource('honorary', 'honoraryApiController');
+    Route::apiResource('honorary', 'HonoraryApiController');
 
     // Schedules
     Route::apiResource('schedules', 'ScheduleApiController');

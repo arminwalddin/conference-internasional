@@ -46,12 +46,12 @@ class HonoraryController extends Controller
 
     public function edit(Honorary $honorary)
     {
-        abort_if(Gate::denies('speaker_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('honorary_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.speakers.edit', compact('speaker'));
+        return view('admin.honorary.edit', compact('honorary'));
     }
 
-    public function update(UpdateSpeakerRequest $request, Honorary $honorary)
+    public function update(UpdateHonoraryRequest $request, Honorary $honorary)
     {
         $honorary->update($request->all());
 
@@ -68,20 +68,20 @@ class HonoraryController extends Controller
 
     public function show(Honorary $honorary)
     {
-        abort_if(Gate::denies('speaker_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('honorary_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.speakers.show', compact('speaker'));
+        return view('admin.honorary.show', compact('honorary'));
     }
 
     public function destroy(Honorary $honorary)
     {
-        abort_if(Gate::denies('speaker_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('honorary_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $honorary->delete();
 
         return back();
     }
-    public function massDestroy(MassDestroySpeakerRequest $request)
+    public function massDestroy(MassDestroyHonoraryRequest $request)
     {
         Honorary::whereIn('id', request('ids'))->delete();
 

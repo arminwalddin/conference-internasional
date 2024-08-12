@@ -43,7 +43,7 @@ class Honorary extends Model implements HasMedia
 
     public function schedules()
     {
-        return $this->hasMany(Schedule::class, 'speaker_id', 'id');
+        return $this->hasMany(Schedule::class, 'honorary', 'id');
     }
 
     public function getPhotoAttribute()

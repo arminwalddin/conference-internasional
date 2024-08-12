@@ -33,6 +33,8 @@
 
   @include('sections.speakers')
 
+  @include('sections.honorary')
+
   @include('sections.schedule')
 
   @include('sections.venues')

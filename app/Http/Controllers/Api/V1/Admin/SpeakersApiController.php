@@ -7,14 +7,15 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreSpeakerRequest;
 use App\Http\Requests\UpdateSpeakerRequest;
 use App\Http\Resources\Admin\SpeakerResource;
-use App\Honorary;
+// use App\Honorary;
 use App\Http\Requests\MassDestroySpeakerRequest;
-use App\Http\Requests\StoreHonoraryRequest;
+use App\Speaker;
+// use App\Http\Requests\StoreHonoraryRequest;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class HonoraryApiController extends Controller
+class SpeakerApiController extends Controller
 {
     use MediaUploadingTrait;
 
@@ -22,69 +23,69 @@ class HonoraryApiController extends Controller
     {
         abort_if(Gate::denies('speaker_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $honorary = Honorary::all();
+        $speaker = Speaker::all();
 
-        return view('admin.honorary.index', compact('honorary'));
+        return view('admin.speaker.index', compact('speaker'));
     }
 
     public function create()
     {
-        abort_if(Gate::denies('honorary_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('speaker_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.honorary.create');
+        return view('admin.speaker.create');
     }
 
-    public function store(StoreHonoraryRequest $request)
+    public function store(StoreSpeakerRequest $request)
     {
-        $honorary = Honorary::create($request->all());
+        $speaker = Speaker::create($request->all());
 
         if ($request->input('photo', false)) {
-            $honorary->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
+            $speaker->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
         }
 
-        return redirect()->route('admin.honorary.index');
+        return redirect()->route('admin.speaker.index');
     }
 
-    public function edit(Honorary $honorary)
+    public function edit(Speaker $speaker)
     {
         abort_if(Gate::denies('speaker_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('admin.speakers.edit', compact('speaker'));
     }
 
-    public function update(UpdateSpeakerRequest $request, Honorary $honorary)
+    public function update(UpdateSpeakerRequest $request, Speaker $speaker)
     {
-        $honorary->update($request->all());
+        $speaker->update($request->all());
 
         if ($request->input('photo', false)) {
-            if (!$honorary->photo || $request->input('photo') !== $honorary->photo->file_name) {
-                $honorary->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
+            if (!$speaker->photo || $request->input('photo') !== $speaker->photo->file_name) {
+                $speaker->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
             }
-        } elseif ($honorary->photo) {
-            $honorary->photo->delete();
+        } elseif ($speaker->photo) {
+            $speaker->photo->delete();
         }
 
-        return redirect()->route('admin.honorary.index');
+        return redirect()->route('admin.speaker.index');
     }
 
-    public function show(Honorary $honorary)
+    public function show(Speaker $speaker)
     {
         abort_if(Gate::denies('speaker_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('admin.speakers.show', compact('speaker'));
     }
 
-    public function destroy(Honorary $honorary)
+    public function destroy(Speaker $speaker)
     {
         abort_if(Gate::denies('speaker_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $honorary->delete();
+        $speaker->delete();
 
         return back();
     }
     public function massDestroy(MassDestroySpeakerRequest $request)
     {
-        Honorary::whereIn('id', request('ids'))->delete();
+        Speaker::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
