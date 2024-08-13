@@ -18,8 +18,12 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::apiResource('speakers', 'SpeakersApiController');
 
     //Honorary
-    Route::post('honorary/media', 'honoraryApiController@storeMedia')->name('honorary.storeMedia');
+    Route::post('honorary/media', 'HonoraryApiController@storeMedia')->name('honorary.storeMedia');
     Route::apiResource('honorary', 'HonoraryApiController');
+
+    //Invited Speaker
+    Route::post('ispeaker/media', 'InvitedSpeakerApiController@storeMedia')->name('ispeaker.storeMedia');
+    Route::apiResource('ispeaker', 'InvitedSpeakerApiController');
 
     // Schedules
     Route::apiResource('schedules', 'ScheduleApiController');

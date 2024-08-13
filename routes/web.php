@@ -3,6 +3,7 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('speaker/{speaker}', 'HomeController@view')->name('speaker');
 Route::get('honorary/{honorary}', 'HomeController@view')->name('honorary');
+Route::get('ispeaker/{ispeaker}', 'HomeController@view')->name('ispeaker');
 Route::redirect('/home', '/admin');
 Auth::routes(['register' => false]);
 
@@ -26,13 +27,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Speakers
     Route::delete('speakers/destroy', 'SpeakersController@massDestroy')->name('speakers.massDestroy');
-    Route::post('honorary/media', 'HonoraryController@storeMedia')->name('honorary.storeMedia');
+    Route::post('speakers/media', 'HonoraryController@storeMedia')->name('speakers.storeMedia');
     Route::resource('speakers', 'SpeakersController');
 
     // Honorary
-    Route::delete('speakers/destroy', 'SpeakersController@massDestroy')->name('speakers.massDestroy');
-    Route::post('speakers/media', 'SpeakersController@storeMedia')->name('speakers.storeMedia');
+    Route::delete('honorary/destroy', 'HonoraryController@massDestroy')->name('honorary.massDestroy');
+    Route::post('honorary/media', 'HonoraryController@storeMedia')->name('honorary.storeMedia');
     Route::resource('honorary', 'HonoraryController');
+
+    // Invited Speaker
+    Route::delete('ispeaker/destroy', 'InvitedSpeakerController@massDestroy')->name('ispeaker.massDestroy');
+    Route::post('ispeaker/media', 'InvitedSpeakerController@storeMedia')->name('ispeaker.storeMedia');
+    Route::resource('ispeaker', 'InvitedSpeakerController');
 
     // Schedules
     Route::delete('schedules/destroy', 'ScheduleController@massDestroy')->name('schedules.massDestroy');

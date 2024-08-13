@@ -6,12 +6,13 @@
         <p>{{ $settings['about_description'] ?? '' }}</p>
       </div>
       <div class="col-lg-3">
-        <h3>Where</h3>
-        <p>{!! $settings['about_where'] ?? '' !!}</p>
+        <h3>Where & When</h3>
+          <p>{!! $settings['about_where'] ?? '' !!}</p>
+          <p>{!! $settings['about_when'] ?? '' !!}</p>        
       </div>
       <div class="col-lg-3">
-        <h3>When</h3>
-        <p>{!! $settings['about_when'] ?? '' !!}</p>
+        <h3>Important Date</h3>
+        <p>{!! $settings['important_date'] ?? '' !!}</p>
       </div>
     </div>
   </div>

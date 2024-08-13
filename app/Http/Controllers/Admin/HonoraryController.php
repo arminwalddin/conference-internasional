@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
-use App\Http\Requests\MassDestroySpeakerRequest;
-use App\Http\Requests\StoreSpeakerRequest;
-use App\Http\Requests\UpdateSpeakerRequest;
 use App\Honorary;
 use App\Http\Requests\StoreHonoraryRequest;
+use App\Http\Requests\UpdateHonoraryRequest;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;

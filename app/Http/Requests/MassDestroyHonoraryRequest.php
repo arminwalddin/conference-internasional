@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\Honorary;
+use App\Speaker;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class StoreHonoraryRequest extends FormRequest
+class MassDestroyHonoraryRequest extends FormRequest
 {
     public function authorize()
     {
-        abort_if(Gate::denies('honorary_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('honorary_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
     }
@@ -19,9 +19,8 @@ class StoreHonoraryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => [
-                'required',
-            ],
+            'ids'   => 'required|array',
+            'ids.*' => 'exists:honorary,id',
         ];
     }
 }

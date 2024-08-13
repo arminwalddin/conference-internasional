@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.honorary.title') }}
+        {{ trans('global.show') }} {{ trans('cruds.ispeaker.title') }}
     </div>
 
     <div class="card-body">
@@ -12,70 +12,70 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.honorary.fields.id') }}
+                            {{ trans('cruds.ispeaker.fields.id') }}
                         </th>
                         <td>
-                            {{ $honorary->id }}
+                            {{ $ispeaker->id }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.honorary.fields.name') }}
+                            {{ trans('cruds.ispeaker.fields.name') }}
                         </th>
                         <td>
-                            {{ $honorary->name }}
+                            {{ $ispeaker->name }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.honorary.fields.description') }}
+                            {{ trans('cruds.ispeaker.fields.description') }}
                         </th>
                         <td>
-                            {!! $honorary->description !!}
+                            {!! $ispeaker->description !!}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.honorary.fields.full_description') }}
+                            {{ trans('cruds.ispeaker.fields.full_description') }}
                         </th>
                         <td>
-                            {!! $honorary->full_description !!}
+                            {!! $ispeaker->full_description !!}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.honorary.fields.photo') }}
+                            {{ trans('cruds.ispeaker.fields.photo') }}
                         </th>
                         <td>
-                            @if($honorary->photo)
-                                <a href="{{ $honorary->photo->getUrl() }}" target="_blank">
-                                    <img src="{{ $honorary->photo->getUrl('thumb') }}" width="50px" height="50px">
+                            @if($ispeaker->photo)
+                                <a href="{{ $ispeaker->photo->getUrl() }}" target="_blank">
+                                    <img src="{{ $ispeaker->photo->getUrl('thumb') }}" width="50px" height="50px">
                                 </a>
                             @endif
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.honorary.fields.twitter') }}
+                            {{ trans('cruds.ispeaker.fields.twitter') }}
                         </th>
                         <td>
-                            {{ $honorary->twitter }}
+                            {{ $ispeaker->twitter }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.honorary.fields.facebook') }}
+                            {{ trans('cruds.ispeaker.fields.facebook') }}
                         </th>
                         <td>
-                            {{ $honorary->facebook }}
+                            {{ $ispeaker->facebook }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.honorary.fields.linkedin') }}
+                            {{ trans('cruds.ispeaker.fields.linkedin') }}
                         </th>
                         <td>
-                            {{ $honorary->linkedin }}
+                            {{ $ispeaker->linkedin }}
                         </td>
                     </tr>
                 </tbody>

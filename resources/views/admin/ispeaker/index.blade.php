@@ -1,17 +1,17 @@
 @extends('layouts.admin')
 @section('content')
-@can('honorary_create')
+@can('ispeaker_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("admin.honorary.create") }}">
-                {{ trans('global.add') }} {{ trans('cruds.honorary.title_singular') }}
+            <a class="btn btn-success" href="{{ route("admin.ispeaker.create") }}">
+                {{ trans('global.add') }} {{ trans('cruds.ispeaker.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.honorary.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.ispeaker.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
@@ -23,22 +23,22 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.honorary.fields.id') }}
+                            {{ trans('cruds.ispeaker.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.honorary.fields.name') }}
+                            {{ trans('cruds.ispeaker.fields.name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.honorary.fields.description') }}
+                            {{ trans('cruds.ispeaker.fields.description') }}
                         </th>
                         <th>
-                            {{ trans('cruds.honorary.fields.twitter') }}
+                            {{ trans('cruds.ispeaker.fields.twitter') }}
                         </th>
                         <th>
-                            {{ trans('cruds.honorary.fields.facebook') }}
+                            {{ trans('cruds.ispeaker.fields.facebook') }}
                         </th>
                         <th>
-                            {{ trans('cruds.honorary.fields.linkedin') }}
+                            {{ trans('cruds.ispeaker.fields.linkedin') }}
                         </th>
                         <th>
                             &nbsp;
@@ -46,44 +46,44 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($honorary as $key => $honorary)
-                        <tr data-entry-id="{{ $honorary->id }}">
+                    @foreach($ispeaker as $key => $ispeaker)
+                        <tr data-entry-id="{{ $ispeaker->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $honorary->id ?? '' }}
+                                {{ $ispeaker->id ?? '' }}
                             </td>
                             <td>
-                                {{ $honorary->name ?? '' }}
+                                {{ $ispeaker->name ?? '' }}
                             </td>
                             <td>
-                                {{ $honorary->description ?? '' }}
+                                {{ $ispeaker->description ?? '' }}
                             </td>
                             <td>
-                                {{ $honorary->twitter ?? '' }}
+                                {{ $ispeaker->twitter ?? '' }}
                             </td>
                             <td>
-                                {{ $honorary->facebook ?? '' }}
+                                {{ $ispeaker->facebook ?? '' }}
                             </td>
                             <td>
-                                {{ $honorary->linkedin ?? '' }}
+                                {{ $ispeaker->linkedin ?? '' }}
                             </td>
                             <td>
-                                @can('honorary_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.honorary.show', $honorary->id) }}">
+                                @can('ispeaker_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.ispeaker.show', $ispeaker->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('honorary_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.honorary.edit', $honorary->id) }}">
+                                @can('ispeaker_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.ispeaker.edit', $ispeaker->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('honorary_edit')
-                                    <form action="{{ route('admin.honorary.destroy', $honorary->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('ispeaker_delete')
+                                    <form action="{{ route('admin.ispeaker.destroy', $ispeaker->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -105,11 +105,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('honorary_delete')
+@can('ispeaker_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.honorary.massDestroy') }}",
+    url: "{{ route('admin.ispeaker.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {

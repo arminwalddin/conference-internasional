@@ -23,7 +23,9 @@
               </ul>
               <hr>
               <div class="text-center">
-                <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="{{ Str::slug($price->name) }}">Register Now</button>
+                {{-- <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="{{ Str::slug($price->name) }}">Register Now</button> --}}
+                {{-- <a href="#" class="button">Register Now</a> --}}
+                <button type="button" href="#" class="btn">Register Now</button>
               </div>
             </div>
           </div>

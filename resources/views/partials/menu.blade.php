@@ -97,6 +97,19 @@
                         </a>
                     </li>
                 @endcan
+                @can('ispeaker_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.ispeaker.index") }}" class="nav-link {{ request()->is('admin/ispeaker') || request()->is('admin/ispeaker/*') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-users">
+
+                            </i>
+                            <p>
+                                <span>{{ trans('cruds.ispeaker.title') }}</span>
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                
                 @can('honorary_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.honorary.index") }}" class="nav-link {{ request()->is('admin/honorary') || request()->is('admin/honorary/*') ? 'active' : '' }}">
@@ -109,6 +122,8 @@
                         </a>
                     </li>
                 @endcan
+                
+                
                 @can('schedule_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.schedules.index") }}" class="nav-link {{ request()->is('admin/schedules') || request()->is('admin/schedules/*') ? 'active' : '' }}">
