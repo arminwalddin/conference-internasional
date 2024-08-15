@@ -25,6 +25,10 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::post('ispeaker/media', 'InvitedSpeakerApiController@storeMedia')->name('ispeaker.storeMedia');
     Route::apiResource('ispeaker', 'InvitedSpeakerApiController');
 
+    //Commite
+    Route::post('commite/media', 'CommiteApiController@storeMedia')->name('commite.storeMedia');
+    Route::apiResource('commite', 'CommiteApiController');
+
     // Schedules
     Route::apiResource('schedules', 'ScheduleApiController');
 

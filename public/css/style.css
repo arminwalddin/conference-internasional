@@ -8,6 +8,8 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
 
 body {
   background: #fff;
@@ -660,6 +662,75 @@ body.mobile-nav-active #mobile-nav-toggle {
 # About Section
 --------------------------------------------------------------*/
 
+#commite {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+#commite .list {
+  position: relative;
+}
+
+#commite .list h2 {
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+
+#commite .list ul {
+  position: relative;
+}
+
+#commite .list ul li {
+  position: relative;
+  left: 0;
+  color: #112363;
+  list-style: none;
+  margin: 5px 0;
+  border-left: 2px solid #f50057;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+#commite .list ul li:hover {
+  left: 10px;
+}
+
+#commite .list ul li span {
+  position: relative;
+  padding: 8px;
+  padding-left: 12px;
+  display: inline-block;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+#commite .list ul li:hover span {
+  color: #ffffff;
+}
+
+#commite .list ul li:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #f82249;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.5s;
+  opacity: 0.2;
+
+}
+
+#commite .list ul li:hover:before {
+  transform: scaleX(1);
+}
+
+
+
 #about {
   background: url("../img/about-bg.jpg");
   background-size: cover;
@@ -668,6 +739,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
   padding: 60px 0 40px 0;
 }
+
 
 #about:before {
   content: "";
@@ -1009,7 +1081,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------------------------------------*/
 
 #schedule {
-  padding: 60px 0 60px 0;
+  padding: 60px 0 30px 0;
 }
 
 #schedule .nav-tabs {
@@ -1107,11 +1179,16 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------------------------------------*/
 
 #venue {
-  padding: 60px 0;
+  padding: 20px 0;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 10px 50px 0 rgba(6, 12, 34, 0.1);
 }
 
 #venue .container-fluid {
   margin-bottom: 3px;
+
 }
 
 #venue .venue-map iframe {
@@ -1124,8 +1201,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: url("../img/venue-info-bg.jpg") top center no-repeat;
   background-size: cover;
   position: relative;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 #venue .venue-info:before {
@@ -1365,6 +1442,127 @@ body.mobile-nav-active #mobile-nav-toggle {
 #faq #faq-list a.collapsed i::before {
   content: "\f055" !important;
 }
+
+
+#filetemplate {
+  padding: 30px 0;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#filetemplate a {
+  background: #ffffff;
+  border: solid 1px #e6e6e6;
+  border-radius: 2px;
+  display: inline-block;
+  height: 200px;
+  line-height: 200px;
+  margin: 5px;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  width: 200px;
+}
+
+#filetemplate a span {
+  background: #f2594b;
+  border-radius: 4px;
+  color: #ffffff;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: normal;
+  padding: 5px 10px;
+  position: relative;
+  text-transform: uppercase;
+  z-index: 1;
+
+}
+
+#filetemplate a span:last-child {
+  /* margin-left: -20px; */
+}
+
+#filetemplate a:before,
+#filetemplate a:after {
+  background: #ffffff;
+  border: solid 3px #9fb4cc;
+  border-radius: 4px;
+  content: '';
+  display: block;
+  height: 35px;
+  left: 50%;
+  margin: -17px 0 0 -12px;
+  position: absolute;
+  top: 50%;
+  /*transform:translate(-50%,-50%);*/
+
+  width: 25px;
+}
+
+#filetemplate a:hover:before,
+#filetemplate a:hover:after {
+  background: #e2e8f0;
+}
+
+/*a:before{transform:translate(-30%,-60%);}*/
+
+#filetemplate a:before {
+  margin: -23px 0 0 -5px;
+}
+
+#filetemplate a:hover {
+  background: #e2e8f0;
+  border-color: #9fb4cc;
+}
+
+#filetemplate a:active {
+  background: #dae0e8;
+  box-shadow: inset 0 2px 2px rgba(0, 0, 0, .25);
+}
+
+#filetemplate a span:first-child {
+  display: none;
+}
+
+#filetemplate a:hover span:first-child {
+  display: inline-block;
+}
+
+#filetemplate a:hover span:last-child {
+  display: none;
+}
+
+/* custom code for the demo */
+
+/* html,
+button,
+input,
+select,
+textarea {
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+html {
+  display: table;
+}
+
+body {
+  background: #f5f5f5;
+  color: #ffffff;
+  display: table-cell;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+} */
+
 
 /*--------------------------------------------------------------
 # Subscribe Section

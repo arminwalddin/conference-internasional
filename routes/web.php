@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\FileTemplateController;
+// use Illuminate\Routing\Route;
+
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('speaker/{speaker}', 'HomeController@view')->name('speaker');
 Route::get('honorary/{honorary}', 'HomeController@view')->name('honorary');
@@ -40,6 +45,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('ispeaker/media', 'InvitedSpeakerController@storeMedia')->name('ispeaker.storeMedia');
     Route::resource('ispeaker', 'InvitedSpeakerController');
 
+    // commite
+    Route::delete('commite/destroy', 'CommiteController@massDestroy')->name('commite.massDestroy');
+    Route::post('commite/media', 'CommiteController@storeMedia')->name('commite.storeMedia');
+    Route::resource('commite', 'CommiteController');
+
     // Schedules
     Route::delete('schedules/destroy', 'ScheduleController@massDestroy')->name('schedules.massDestroy');
     Route::resource('schedules', 'ScheduleController');
@@ -67,6 +77,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Faqs
     Route::delete('faqs/destroy', 'FaqsController@massDestroy')->name('faqs.massDestroy');
     Route::resource('faqs', 'FaqsController');
+
+    // FileTemplate
+    Route::delete('filetemplate/destroy', 'FileTemplateController@massDestroy')->name('filetemplate.massDestroy');
+    Route::resource('filetemplate', 'FileTemplateController');
 
     // Amenities
     Route::delete('amenities/destroy', 'AmenitiesController@massDestroy')->name('amenities.massDestroy');

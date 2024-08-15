@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Honorary;
+use App\Http\Requests\MassDestroyHonoraryRequest;
 use App\Http\Requests\StoreHonoraryRequest;
 use App\Http\Requests\UpdateHonoraryRequest;
 use Gate;
